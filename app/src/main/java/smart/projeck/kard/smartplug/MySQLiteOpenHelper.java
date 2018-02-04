@@ -12,11 +12,8 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper{
     // Explicit
     private static final String DATABASE_NAME = "Smartplug.db";
     private static final int DATABASE_VERSION = 1;
-    private static final String CREATE_USER_TABLE = "create table usertable" +
-            "(_id integer primary key," +
-            "User text," +
-            "Password text" +
-            "Email text);";
+    private static final String CREATE_USER_TABLE = "create table usertable " +
+            "(_id integer primary key, User text, Password text, Email text);";
 
 
 

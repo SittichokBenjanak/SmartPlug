@@ -29,8 +29,13 @@ public class MainActivity extends AppCompatActivity {
 
         // bind Widger ให้ ตัวแปร UsereditText, PasswordEditText รับค่าจากช่องกรอก User กับ Password
         bindWidget();
+        //testAddValue();
 
     }
+
+    private void testAddValue() {
+        objUserTABLE.addNewUser("testUser", "testPassword", "testEmail");
+    }   // testAddValue
 
 
     private void bindWidget() {
