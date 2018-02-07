@@ -1,6 +1,5 @@
 package smart.projeck.kard.smartplug;
 
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,34 +7,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-
 public class MainActivity extends AppCompatActivity {
-
 
     // Explicit ประกาศตัวแปรเพื่อรับค่า User, Password
     private EditText UsereditText, PasswordEditText;
     private String userString, passwordString;
-    private UserTABLE objUserTABLE;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        loading();
-
-        objUserTABLE = new UserTABLE(this);
-
         // bind Widger ให้ ตัวแปร UsereditText, PasswordEditText รับค่าจากช่องกรอก User กับ Password
         bindWidget();
-        //testAddValue();
 
-    }
-
-    private void testAddValue() {
-        objUserTABLE.addNewUser("testUser", "testPassword", "testEmail");
-    }   // testAddValue
+    }   // onCreate
 
 
     private void bindWidget() {
@@ -62,19 +48,7 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }   // onBackPressed
 
-    private void loading() {
 
-        final ProgressDialog loading = ProgressDialog.show(MainActivity.this, "Please wait", "Loading....", false,false);
-
-        new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        loading.dismiss();
-                    }
-
-                }, 3000);
-
-    }   // loading
 
     public void ClickLogin(View view) {
         //ถ้ากด Login Method นี่จะทำงาน
@@ -87,18 +61,18 @@ public class MainActivity extends AppCompatActivity {
             objMyAlertDialog.errorDialog(MainActivity.this,"Please check space","KeyIn User and Password");
 
         } else {
-
-        }
-
-
+            //microgear.chat("Relay","DEV11");
+        } // else
 
     }   // ClickLogin
 
     public void ClickRegister(View view) {
+            //microgear.chat("Relay","DEV10");
         // กด New Register จะส่งไปหน้าสมัครสมาชิก
         startActivity(new Intent(MainActivity.this,RegisterActivity.class));
 
     }   // ClickRegister
+
 
 
 }   // Main Class

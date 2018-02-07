@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "419800389167",
+    "firebase_url": "https://test-93c39.firebaseio.com",
+    "project_id": "test-93c39",
+    "storage_bucket": "test-93c39.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:419800389167:android:3ebf92142906991b",
+        "android_client_info": {
+          "package_name": "smart.projeck.kard.smartplug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "419800389167-ss0hdgpbb6qt9r5jbkogq3km6mum5h29.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsSTSsRvjcD_A2U3oFbysJsuc6GetHago"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
