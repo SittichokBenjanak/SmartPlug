@@ -63,9 +63,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void ClickRegister(View view) {
-            //microgear.chat("Relay","DEV10");
-        // กด New Register จะส่งไปหน้าสมัครสมาชิก
 
+
+        // กด New Register จะส่งไปหน้าสมัครสมาชิก
         finish();
         startActivity(new Intent(MainActivity.this,RegisterActivity.class));
 
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }   // if
 
-        progressDialog.setMessage("Registering User...");
+        progressDialog.setMessage("SingIn ...");
         progressDialog.show();
 
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
