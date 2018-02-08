@@ -1,27 +1,35 @@
 {
   "project_info": {
-    "project_number": "419800389167",
-    "firebase_url": "https://test-93c39.firebaseio.com",
-    "project_id": "test-93c39",
-    "storage_bucket": "test-93c39.appspot.com"
+    "project_number": "683888809903",
+    "firebase_url": "https://smartplug-1418b.firebaseio.com",
+    "project_id": "smartplug-1418b",
+    "storage_bucket": "smartplug-1418b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:419800389167:android:3ebf92142906991b",
+        "mobilesdk_app_id": "1:683888809903:android:3ebf92142906991b",
         "android_client_info": {
           "package_name": "smart.projeck.kard.smartplug"
         }
       },
       "oauth_client": [
         {
-          "client_id": "419800389167-ss0hdgpbb6qt9r5jbkogq3km6mum5h29.apps.googleusercontent.com",
+          "client_id": "683888809903-caablrngts44kv3d67iqpot9vuk65ki1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "smart.projeck.kard.smartplug",
+            "certificate_hash": "15a3db0048c91cabf5f19ee2545ff289250383d1"
+          }
+        },
+        {
+          "client_id": "683888809903-fri33et4fkkgr522p6h86rq38mu73pu5.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCsSTSsRvjcD_A2U3oFbysJsuc6GetHago"
+          "current_key": "AIzaSyA3dK8zrOrp-x13DAoS_p0263xzuD_LXgQ"
         }
       ],
       "services": {
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "683888809903-fri33et4fkkgr522p6h86rq38mu73pu5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

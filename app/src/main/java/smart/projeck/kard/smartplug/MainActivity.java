@@ -1,34 +1,46 @@
 package smart.projeck.kard.smartplug;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
     // Explicit ประกาศตัวแปรเพื่อรับค่า User, Password
-    private EditText UsereditText, PasswordEditText;
-    private String userString, passwordString;
+    private EditText maileditText, passeditText;
+
+    private ProgressDialog progressDialog;
+    private FirebaseAuth firebaseAuth;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // bind Widger ให้ ตัวแปร UsereditText, PasswordEditText รับค่าจากช่องกรอก User กับ Password
-        bindWidget();
+        // เรียนใช้ Firebase
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        progressDialog = new ProgressDialog(this);
+
+        maileditText = findViewById(R.id.Usereditext);
+        passeditText = findViewById(R.id.Passeditext);
+
 
     }   // onCreate
-
-
-    private void bindWidget() {
-        UsereditText = findViewById(R.id.editText);
-        PasswordEditText = findViewById(R.id.editText2);
-
-    }   // bindWidget
 
     public void onBackPressed() {
         android.support.v7.app.AlertDialog.Builder dialog = new android.support.v7.app.AlertDialog.Builder(this);
@@ -50,29 +62,55 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public void ClickLogin(View view) {
-        //ถ้ากด Login Method นี่จะทำงาน
-        userString = UsereditText.getText().toString().trim();
-        passwordString = PasswordEditText.getText().toString().trim();
-
-        if (userString.equals("") || passwordString.equals("")){
-            // ถ้าฃ่องกรอก User กับ Password อันไหนไม่ได้กรอกจะทำงาน
-            MyAlertDialog objMyAlertDialog = new MyAlertDialog();
-            objMyAlertDialog.errorDialog(MainActivity.this,"Please check space","KeyIn User and Password");
-
-        } else {
-            //microgear.chat("Relay","DEV11");
-        } // else
-
-    }   // ClickLogin
-
     public void ClickRegister(View view) {
             //microgear.chat("Relay","DEV10");
         // กด New Register จะส่งไปหน้าสมัครสมาชิก
+
+        finish();
         startActivity(new Intent(MainActivity.this,RegisterActivity.class));
 
     }   // ClickRegister
 
+    public void ClickLogin(View view) {
+
+        String email = maileditText.getText().toString().trim();
+        String password = passeditText.getText().toString().trim();
+
+
+        if (TextUtils.isEmpty(email)) {
+            MyAlertDialog objMyAlertDialog = new MyAlertDialog();
+            objMyAlertDialog.errorDialog(MainActivity.this,"Please check space","KeyIn Email");
+            return;
+        }   // if
+
+        if (TextUtils.isEmpty(password)) {
+            MyAlertDialog objMyAlertDialog = new MyAlertDialog();
+            objMyAlertDialog.errorDialog(MainActivity.this,"Please check space","KeyIn Password");
+            return;
+        }   // if
+
+        progressDialog.setMessage("Registering User...");
+        progressDialog.show();
+
+        firebaseAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+            @Override
+            public void onSuccess(AuthResult authResult) {
+                Toast.makeText(MainActivity.this, "SingIn OK", Toast.LENGTH_SHORT).show();
+                finish();
+                startActivity(new Intent(MainActivity.this,hubActivity.class));
+                progressDialog.dismiss();
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(MainActivity.this, "SingIn Fail", Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+
+            }
+        });
+
+    }
 
 
 }   // Main Class
