@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
@@ -23,7 +22,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private EditText editTextEmail, editTextPassword;
 
     private ProgressDialog progressDialog;
-
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -41,8 +39,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         buttonRegister = findViewById(R.id.button2);
         editTextEmail = findViewById(R.id.Emailedit);
         editTextPassword = findViewById(R.id.Passwordedit);
-
-
 
         // ผูก buttonให้คลิกได้
         buttonRegister.setOnClickListener(this);

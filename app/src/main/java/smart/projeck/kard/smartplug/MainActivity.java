@@ -10,39 +10,37 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
-
-    // Explicit ประกาศตัวแปรเพื่อรับค่า User, Password
+    // ประกาศตัวแปรเพื่อรับค่า Email และ Password
     private EditText maileditText, passeditText;
 
+    // เรียกใช้ ProgressDialog กับ FirebaseAuth
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // เรียนใช้ Firebase
+        // ใช้ ความสามารถ Firebase ในการเชื่อมต่อกับ server
         firebaseAuth = FirebaseAuth.getInstance();
 
+        // ใช้ ความสามารถ ProgressDialog ในการโชว์ Dialog รอโหลด
         progressDialog = new ProgressDialog(this);
 
+        // maileditText และ passeditText รับค่าจาก Usereditext และ Passeditext
         maileditText = findViewById(R.id.Usereditext);
         passeditText = findViewById(R.id.Passeditext);
-
 
     }   // onCreate
 
     public void onBackPressed() {
+        // ถ้าผู้ใช้กดปุ่มกลับ จะถามว่าจะปิดโปรแกรมใช่หรือไม่
         android.support.v7.app.AlertDialog.Builder dialog = new android.support.v7.app.AlertDialog.Builder(this);
         dialog.setIcon(R.drawable.ic_action_alert);
         dialog.setCancelable(true);
@@ -61,21 +59,17 @@ public class MainActivity extends AppCompatActivity {
     }   // onBackPressed
 
 
-
     public void ClickRegister(View view) {
-
-
-        // กด New Register จะส่งไปหน้าสมัครสมาชิก
+        // กด ปุ่ม New Register จะส่งไปหน้าสมัครสมาชิก
         finish();
         startActivity(new Intent(MainActivity.this,RegisterActivity.class));
 
     }   // ClickRegister
 
     public void ClickLogin(View view) {
-
+        // กด ปุ่ม Login จะตรวจสอบ email และ password ที่ใส่มา แล้วทำการเช็คข้อมูล ถ้าข้อมูลถูกต้องจะส่งไปหน้าเมนู
         String email = maileditText.getText().toString().trim();
         String password = passeditText.getText().toString().trim();
-
 
         if (TextUtils.isEmpty(email)) {
             MyAlertDialog objMyAlertDialog = new MyAlertDialog();
@@ -109,8 +103,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
     }
-
 
 }   // Main Class
