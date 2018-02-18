@@ -31,7 +31,7 @@ public class hubActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             Bundle bundle = msg.getData();
-            Relay55 = bundle.getString("DEV41");
+            Relay55 = bundle.getString("ControlRelay");
             TextView myTextView =
                     (TextView)findViewById(R.id.textView4);
             myTextView.append(Relay55+"\n");
@@ -48,7 +48,7 @@ public class hubActivity extends AppCompatActivity {
         MicrogearCallBack callback = new MicrogearCallBack();
         microgear.connect(appid, key, secret, alias);
         microgear.setCallback(callback);
-        microgear.subscribe("Relay");
+        microgear.subscribe("ControlRelay");
         (new Thread(new Runnable()
         {
             int count = 1;
@@ -62,7 +62,7 @@ public class hubActivity extends AppCompatActivity {
                         {
                             @Override
                             public void run(){
-                                //microgear.publish("Topictest", String.valueOf(count)+".  Test message");
+                                //microgear.publish("ControlRelay", String.valueOf(count)+".  Test message");
                                 //count++;
                             }
                         });
@@ -96,7 +96,7 @@ public class hubActivity extends AppCompatActivity {
         public void onConnect() {
             Message msg = handler.obtainMessage();
             Bundle bundle = new Bundle();
-            //bundle.putString("myKey", "Now I'm connected with netpie");
+            bundle.putString("ControlRelay", "Now I'm connected with netpie");
             msg.setData(bundle);
             //handler.sendMessage(msg);
             //Log.i("Connected","Now I'm connected with netpie");
@@ -108,10 +108,10 @@ public class hubActivity extends AppCompatActivity {
         public void onMessage(String topic, String message) {
             Message msg = handler.obtainMessage();
             Bundle bundle = new Bundle();
-            bundle.putString("DEV41", topic+" : "+message);
+            bundle.putString("ControlRelay", topic+" : "+message);
             msg.setData(bundle);
 
-            handler.sendMessage(msg);
+            //handler.sendMessage(msg);
             //Log.i("Message",topic+" : "+message);
         }
 
@@ -119,7 +119,7 @@ public class hubActivity extends AppCompatActivity {
         public void onPresent(String token) {
             Message msg = handler.obtainMessage();
             Bundle bundle = new Bundle();
-            bundle.putString("DEV41", "New friend Connect :"+token);
+            bundle.putString("ControlRelay", "New friend Connect :"+token);
             msg.setData(bundle);
             //handler.sendMessage(msg);
             //Log.i("present","New friend Connect :"+token);
@@ -129,7 +129,7 @@ public class hubActivity extends AppCompatActivity {
         public void onAbsent(String token) {
             Message msg = handler.obtainMessage();
             Bundle bundle = new Bundle();
-            bundle.putString("DEV41", "Friend lost :"+token);
+            bundle.putString("ControlRelay", "Friend lost :"+token);
             msg.setData(bundle);
             //handler.sendMessage(msg);
             //Log.i("absent","Friend lost :"+token);
@@ -139,7 +139,7 @@ public class hubActivity extends AppCompatActivity {
         public void onDisconnect() {
             Message msg = handler.obtainMessage();
             Bundle bundle = new Bundle();
-            bundle.putString("DEV41", "Disconnected");
+            bundle.putString("ControlRelay", "Disconnected");
             msg.setData(bundle);
             //handler.sendMessage(msg);
             //Log.i("disconnect","Disconnected");
@@ -149,7 +149,7 @@ public class hubActivity extends AppCompatActivity {
         public void onError(String error) {
             Message msg = handler.obtainMessage();
             Bundle bundle = new Bundle();
-            bundle.putString("DEV41", "Exception : "+error);
+            bundle.putString("ControlRelay", "Exception : "+error);
             msg.setData(bundle);
             //handler.sendMessage(msg);
             //Log.i("exception","Exception : "+error);
@@ -159,7 +159,7 @@ public class hubActivity extends AppCompatActivity {
         public void onInfo(String info) {
             Message msg = handler.obtainMessage();
             Bundle bundle = new Bundle();
-            bundle.putString("DEV41", "Exception : "+info);
+            bundle.putString("ControlRelay", "Exception : "+info);
             msg.setData(bundle);
             //handler.sendMessage(msg);
             //Log.i("info","Info : "+info);
@@ -177,15 +177,15 @@ public class hubActivity extends AppCompatActivity {
         Relay1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                if (isChecked) {
-                    Toast.makeText(hubActivity.this, Relay55, Toast.LENGTH_SHORT).show();
-                    //microgear.chat("Relay","DEV41");
-                    //Toast.makeText(hubActivity.this, "ON", Toast.LENGTH_SHORT).show();
 
+                if (isChecked) {
+
+                    microgear.chat("Relay","DEV41");
+                    Toast.makeText(hubActivity.this, "Relay1 = ON", Toast.LENGTH_SHORT).show();
 
                 } else {
-                    //microgear.chat("Relay","DEV40");
-                    Toast.makeText(hubActivity.this, "OFF", Toast.LENGTH_SHORT).show();
+                    microgear.chat("Relay","DEV40");
+                    Toast.makeText(hubActivity.this, "Relay1 = OFF", Toast.LENGTH_SHORT).show();
                 } // else if
             }
         }); // Relay1
@@ -194,12 +194,12 @@ public class hubActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked) {
-                    //microgear.chat("Relay","DEV31");
-                    Toast.makeText(hubActivity.this, "ON", Toast.LENGTH_SHORT).show();
+                    microgear.chat("Relay","DEV31");
+                    Toast.makeText(hubActivity.this, "Relay2 = ON", Toast.LENGTH_SHORT).show();
 
                 } else {
-                    //microgear.chat("Relay","DEV30");
-                    Toast.makeText(hubActivity.this, "OFF", Toast.LENGTH_SHORT).show();
+                    microgear.chat("Relay","DEV30");
+                    Toast.makeText(hubActivity.this, "Relay2 = OFF", Toast.LENGTH_SHORT).show();
                 } // else if
 
             }
@@ -209,12 +209,12 @@ public class hubActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked) {
-                    //microgear.chat("Relay","DEV21");
-                    Toast.makeText(hubActivity.this, "ON", Toast.LENGTH_SHORT).show();
+                    microgear.chat("Relay","DEV21");
+                    Toast.makeText(hubActivity.this, "Relay3 = ON", Toast.LENGTH_SHORT).show();
 
                 } else {
-                    //microgear.chat("Relay","DEV20");
-                    Toast.makeText(hubActivity.this, "OFF", Toast.LENGTH_SHORT).show();
+                    microgear.chat("Relay","DEV20");
+                    Toast.makeText(hubActivity.this, "Relay3 = OFF", Toast.LENGTH_SHORT).show();
                 } // else if
 
             }
@@ -224,11 +224,11 @@ public class hubActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked) {
-                    //microgear.chat("Relay","DEV11");
-                    Toast.makeText(hubActivity.this, "ON", Toast.LENGTH_SHORT).show();
+                    microgear.chat("Relay","DEV11");
+                    Toast.makeText(hubActivity.this, "Relay4 = ON", Toast.LENGTH_SHORT).show();
                 } else {
-                    //microgear.chat("Relay","DEV10");
-                    Toast.makeText(hubActivity.this, "OFF", Toast.LENGTH_SHORT).show();
+                    microgear.chat("Relay","DEV10");
+                    Toast.makeText(hubActivity.this, "Relay4 = OFF", Toast.LENGTH_SHORT).show();
                 } // else if
 
             }
