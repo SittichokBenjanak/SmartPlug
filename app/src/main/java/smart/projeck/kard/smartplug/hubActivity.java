@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import java.util.ResourceBundle;
+
 import io.netpie.microgear.Microgear;
 import io.netpie.microgear.MicrogearEventListener;
 
@@ -48,7 +50,7 @@ public class hubActivity extends AppCompatActivity {
         MicrogearCallBack callback = new MicrogearCallBack();
         microgear.connect(appid, key, secret, alias);
         microgear.setCallback(callback);
-        microgear.subscribe("ControlRelay");
+        microgear.subscribe("Relay");
         (new Thread(new Runnable()
         {
             int count = 1;
@@ -180,11 +182,11 @@ public class hubActivity extends AppCompatActivity {
 
                 if (isChecked) {
 
-                    microgear.chat("Relay","DEV41");
+                    //microgear.chat("Relay","DEV41");
                     Toast.makeText(hubActivity.this, "Relay1 = ON", Toast.LENGTH_SHORT).show();
 
                 } else {
-                    microgear.chat("Relay","DEV40");
+                    //microgear.chat("Relay","DEV40");
                     Toast.makeText(hubActivity.this, "Relay1 = OFF", Toast.LENGTH_SHORT).show();
                 } // else if
             }
@@ -194,11 +196,11 @@ public class hubActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked) {
-                    microgear.chat("Relay","DEV31");
+                    //microgear.chat("Relay","DEV31");
                     Toast.makeText(hubActivity.this, "Relay2 = ON", Toast.LENGTH_SHORT).show();
 
                 } else {
-                    microgear.chat("Relay","DEV30");
+                    //microgear.chat("Relay","DEV30");
                     Toast.makeText(hubActivity.this, "Relay2 = OFF", Toast.LENGTH_SHORT).show();
                 } // else if
 
@@ -209,11 +211,11 @@ public class hubActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked) {
-                    microgear.chat("Relay","DEV21");
+                    //microgear.chat("Relay","DEV21");
                     Toast.makeText(hubActivity.this, "Relay3 = ON", Toast.LENGTH_SHORT).show();
 
                 } else {
-                    microgear.chat("Relay","DEV20");
+                    //microgear.chat("Relay","DEV20");
                     Toast.makeText(hubActivity.this, "Relay3 = OFF", Toast.LENGTH_SHORT).show();
                 } // else if
 
@@ -224,10 +226,10 @@ public class hubActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked) {
-                    microgear.chat("Relay","DEV11");
+                    //microgear.chat("Relay","DEV11");
                     Toast.makeText(hubActivity.this, "Relay4 = ON", Toast.LENGTH_SHORT).show();
                 } else {
-                    microgear.chat("Relay","DEV10");
+                    //microgear.chat("Relay","DEV10");
                     Toast.makeText(hubActivity.this, "Relay4 = OFF", Toast.LENGTH_SHORT).show();
                 } // else if
 
