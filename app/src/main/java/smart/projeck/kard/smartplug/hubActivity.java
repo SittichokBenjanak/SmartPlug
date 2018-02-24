@@ -1,5 +1,6 @@
 package smart.projeck.kard.smartplug;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -7,9 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -202,7 +207,7 @@ public class hubActivity extends AppCompatActivity {
     /*************** ปุ่ม ON  ***************/
     public void ClickOnRelay1(View view) {
 
-        //microgear.chat("Relay","DEV41");
+        microgear.chat("Relay","DEV41");
         final Map<String, Object> resetStatus = new HashMap<String, Object>();
         resetStatus.put("Relay1", "1");
         myRef.updateChildren(resetStatus);
@@ -211,7 +216,7 @@ public class hubActivity extends AppCompatActivity {
 
     public void ClickOnRelay2(View view) {
 
-        //microgear.chat("Relay","DEV31");
+        microgear.chat("Relay","DEV31");
         final Map<String, Object> resetStatus = new HashMap<String, Object>();
         resetStatus.put("Relay2", "1");
         myRef.updateChildren(resetStatus);
@@ -220,7 +225,7 @@ public class hubActivity extends AppCompatActivity {
 
     public void ClickOnRelay3(View view) {
 
-        //microgear.chat("Relay","DEV21");
+        microgear.chat("Relay","DEV21");
         final Map<String, Object> resetStatus = new HashMap<String, Object>();
         resetStatus.put("Relay3", "1");
         myRef.updateChildren(resetStatus);
@@ -229,7 +234,7 @@ public class hubActivity extends AppCompatActivity {
 
     public void ClickOnRelay4(View view) {
 
-        //microgear.chat("Relay","DEV11");
+        microgear.chat("Relay","DEV11");
         final Map<String, Object> resetStatus = new HashMap<String, Object>();
         resetStatus.put("Relay4", "1");
         myRef.updateChildren(resetStatus);
@@ -240,7 +245,7 @@ public class hubActivity extends AppCompatActivity {
     /**************  ปุ่ม OFF  *****************/
     public void ClickOffRelay1(View view) {
 
-        //microgear.chat("Relay","DEV40");
+        microgear.chat("Relay","DEV40");
         final Map<String, Object> resetStatus = new HashMap<String, Object>();
         resetStatus.put("Relay1", "0");
         myRef.updateChildren(resetStatus);
@@ -249,7 +254,7 @@ public class hubActivity extends AppCompatActivity {
 
     public void ClickOffRelay2(View view) {
 
-        //microgear.chat("Relay","DEV30");
+        microgear.chat("Relay","DEV30");
         final Map<String, Object> resetStatus = new HashMap<String, Object>();
         resetStatus.put("Relay2", "0");
         myRef.updateChildren(resetStatus);
@@ -258,7 +263,7 @@ public class hubActivity extends AppCompatActivity {
 
     public void ClickOffRelay3(View view) {
 
-        //microgear.chat("Relay","DEV20");
+        microgear.chat("Relay","DEV20");
         final Map<String, Object> resetStatus = new HashMap<String, Object>();
         resetStatus.put("Relay3", "0");
         myRef.updateChildren(resetStatus);
@@ -267,7 +272,7 @@ public class hubActivity extends AppCompatActivity {
 
     public void ClickOffRelay4(View view) {
 
-        //microgear.chat("Relay","DEV10");
+        microgear.chat("Relay","DEV10");
         final Map<String, Object> resetStatus = new HashMap<String, Object>();
         resetStatus.put("Relay4", "0");
         myRef.updateChildren(resetStatus);
@@ -276,18 +281,166 @@ public class hubActivity extends AppCompatActivity {
 
     /************************ ปุ่ม Edit ***************************/
 
+
     public void ClickEdit1(View view) {
 
+        final AlertDialog.Builder builder = new AlertDialog.Builder(hubActivity.this);
+        LayoutInflater inflater = getLayoutInflater();
+
+        View view1 = inflater.inflate(R.layout.editname, null);
+        builder.setView(view1);
+
+        final EditText Editename1 = view1.findViewById(R.id.editText);
+
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String editname1 = Editename1.getText().toString().trim();
+                if (editname1.equals("")) {
+                    Toast.makeText(hubActivity.this, "Please enter name", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    final Map<String, Object> resetStatus = new HashMap<String, Object>();
+                    resetStatus.put("Name1", editname1);
+                    myRef.updateChildren(resetStatus);
+                    Toast.makeText(hubActivity.this, "Change successfully", Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+
+            }
+        });
+
+        builder.create();
+        builder.show();
 
     }   //ClickEdit1
 
     public void ClickEdit2(View view) {
 
+        final AlertDialog.Builder builder = new AlertDialog.Builder(hubActivity.this);
+        LayoutInflater inflater = getLayoutInflater();
+
+        View view1 = inflater.inflate(R.layout.editname, null);
+        builder.setView(view1);
+
+        final EditText Editename1 = view1.findViewById(R.id.editText);
+
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String editname1 = Editename1.getText().toString().trim();
+                if (editname1.equals("")) {
+                    Toast.makeText(hubActivity.this, "Please enter name", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    final Map<String, Object> resetStatus = new HashMap<String, Object>();
+                    resetStatus.put("Name2", editname1);
+                    myRef.updateChildren(resetStatus);
+                    Toast.makeText(hubActivity.this, "Change successfully", Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+
+            }
+        });
+
+        builder.create();
+        builder.show();
+
     }   //ClickEdit2
     public void ClickEdit3(View view) {
 
+        final AlertDialog.Builder builder = new AlertDialog.Builder(hubActivity.this);
+        LayoutInflater inflater = getLayoutInflater();
+
+        View view1 = inflater.inflate(R.layout.editname, null);
+        builder.setView(view1);
+
+        final EditText Editename1 = view1.findViewById(R.id.editText);
+
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String editname1 = Editename1.getText().toString().trim();
+                if (editname1.equals("")) {
+                    Toast.makeText(hubActivity.this, "Please enter name", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    final Map<String, Object> resetStatus = new HashMap<String, Object>();
+                    resetStatus.put("Name3", editname1);
+                    myRef.updateChildren(resetStatus);
+                    Toast.makeText(hubActivity.this, "Change successfully", Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+
+            }
+        });
+
+        builder.create();
+        builder.show();
+
     }   //ClickEdit3
     public void ClickEdit4(View view) {
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(hubActivity.this);
+        LayoutInflater inflater = getLayoutInflater();
+
+        View view1 = inflater.inflate(R.layout.editname, null);
+        builder.setView(view1);
+
+        final EditText Editename1 = view1.findViewById(R.id.editText);
+
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String editname1 = Editename1.getText().toString().trim();
+                if (editname1.equals("")) {
+                    Toast.makeText(hubActivity.this, "Please enter name", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    final Map<String, Object> resetStatus = new HashMap<String, Object>();
+                    resetStatus.put("Name4", editname1);
+                    myRef.updateChildren(resetStatus);
+                    Toast.makeText(hubActivity.this, "Change successfully", Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+
+            }
+        });
+
+        builder.create();
+        builder.show();
 
     }   //ClickEdit4
 

@@ -55,6 +55,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center_horizontal"
+                        android:onClick="ClickEdit1"
                         android:text="Edit"
                         android:textColor="@color/colorAccent"
                         android:textSize="20sp" />
@@ -126,6 +127,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center_horizontal"
+                        android:onClick="ClickEdit2"
                         android:text="Edit"
                         android:textColor="@color/colorAccent"
                         android:textSize="20sp" />
@@ -195,6 +197,7 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_weight="1"
                         android:gravity="center_horizontal"
+                        android:onClick="ClickEdit3"
                         android:text="Edit"
                         android:textColor="@color/colorAccent"
                         android:textSize="20sp" />
@@ -264,6 +267,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center_horizontal"
+                        android:onClick="ClickEdit4"
                         android:text="Edit"
                         android:textColor="@color/colorAccent"
                         android:textSize="20sp" />
