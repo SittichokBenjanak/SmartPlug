@@ -16,6 +16,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
+
     // ประกาศตัวแปรเพื่อรับค่า Email และ Password
     private EditText maileditText, passeditText;
 
